@@ -26,9 +26,9 @@ let proximoId = 1;
 // Escreva a funcao validarTreino(corpo), que devolve a mensagem
 // de erro quando algo esta errado, ou null quando esta tudo certo.
 // ------------------------------------------------------------
-function validarTreino(corpo){
-    if(typeof corpo.nome !== 'String' || corpo.nome.trim() === ''){
-        return 'O campo nome e obrigatorio e deve ser um texto .';
+function validarTreino(corpo) {
+    if (typeof corpo.nome !== 'string' || corpo.nome.trim() === '') {
+        return 'O campo nome e obrigatorio e deve ser um texto.';
     }
     if(typeof corpo.duracao !== 'Number' || corpo.duracao <= 0){
         return 'O campo duracao e obrigatorio e deve ser um numero maior que zero';
@@ -52,7 +52,7 @@ app.get('/treinos/:id', (req , res) => {
     const id = Number(req.params.id);
     const treino = treinos.find((t) => t.id === id);
     if (treino === undefined) {
-        return res.status (404).json({ erro: 'Treino nao encontrado .'});
+        return res.status (404).json({ erro: 'Treino nao encontrado'});
     }
     res.status(200).json(treino);
 });
@@ -81,7 +81,7 @@ app.put('/treinos/:id', (req , res) => {
     const id = Number(req.params.id);
     const treino = treinos.find((t) => t.id === id);
     if (treino === undefined) {
-        return res.status (404).json({ erro: 'Treino nao encontrado' .});
+        return res.status (404).json({ erro: 'Treino nao encontrado'});
     }
     const erro = validarTreino(req.body);
     if (erro !== null ){
@@ -96,7 +96,15 @@ app.put('/treinos/:id', (req , res) => {
 // ------------------------------------------------------------
 // DELETE /treinos/:id - remove um treino
 // ------------------------------------------------------------
-
+app.delete('/treinos/:id', (req , res) => {
+const id = Number(req.params.id);
+const posicao = treinos.findIndex((t) => t.id === id);
+if (posicao === -1) {
+return res.status (404).json({ erro: 'Treino nao encontrado' });
+}
+treinos.splice(posicao , 1);
+res.status (204).end();
+});
 
 
 // ------------------------------------------------------------
