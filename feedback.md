@@ -1,3 +1,3 @@
-# Feedback - Aula 03
+Davi, suas aulas 02, 03 e 04 estão certas. A entrega da aula 04 até chegou com os nomes das pastas fora do padrão, controler em vez de controllers, mas como o require bate com o nome real da pasta, funciona do mesmo jeito, e por isso contou inteira. Nota cheia nas três.
 
-Davi, conferi seu código e a aula 3 ficou certinha, as cinco rotas conversando direto com o banco. Essa parte da nota tá garantida.
+Os outros 2 pontos desse primeiro momento são a arguição, na próxima aula, no laboratório.
